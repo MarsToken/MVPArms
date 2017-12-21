@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
-apply plugin: 'me.tatarka.retrolambda'
+//wmb:3.0.0报错 https://stackoverflow.com/questions/44524829/missing-javacompiletask-for-variant
+//apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -16,6 +17,10 @@ android {
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
+        //wmb:gradle3.0.0报错 加入下面代码
+        javaCompileOptions {
+            annotationProcessorOptions { includeCompileClasspath = true }
+        }
     }
     buildTypes {
         release {
